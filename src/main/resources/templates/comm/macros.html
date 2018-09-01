@@ -4,9 +4,13 @@
     <li class="prev"><a href="/${prefix}/${pageInfo.prevPage}">${prevText}</a></li>
     #end
 
-    #for(navIndex : pageInfo.navPageNums)
-    <li #if(pageInfo.pageNum== navIndex) class="current" #end><a href="/page/${navIndex}">${navIndex}</a></li>
-    #end
+	#for(navIndex : pageInfo.navPageNums)
+		#if(pageInfo.hasNextPage)
+		<li #if(pageInfo.pageNum== navIndex) class="current" #end><a href="/${prefix}/${navIndex}">${navIndex}</a></li>
+		#else
+		<li #if(pageInfo.pageNum== navIndex) class="current" #end><a href="/page/${navIndex}">${navIndex}</a></li>
+		#end
+	#end
 
     #if(pageInfo.hasNextPage)
     <li class="next"><a href="/${prefix}/${pageInfo.nextPage}">${nextText}</a></li>
