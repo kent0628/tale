@@ -1,0 +1,13 @@
+[Unit]
+Description=tale blog
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Restart=always
+RestartSec=30
+WorkingDirectory=/root/tale
+ExecStart=/root/tale/start.sh
+ 
+[Install]
+WantedBy=multi-user.target
